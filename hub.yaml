@@ -4,13 +4,13 @@ description: |-2
 
 
 activities:
-  - https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/activities/kojima/etc/form.xml
-  - https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/activities/kojima/etc/upload.xml
+  - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/etc/form.xml
+  - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/etc/upload.xml
 
 
 sandboxes:
-  - https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/sandboxes/kojima/octave.yaml
-  - https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/sandboxes/kojima/python3.yaml
+  - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/octave.yaml
+  - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/python3.yaml
 
 
 contents:
