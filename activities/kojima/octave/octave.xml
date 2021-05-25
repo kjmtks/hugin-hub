@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Activity Version="hugin-0.9">
+
+  <Sandbox>default</Sandbox>
+
+  <Usage>
+# Octave
+
+Parameters:
+
+* Name
+* Subject
+* Description
+* Tags
+* Deadline
+* (optional) CanSubmitAfterDeadline
+* (optional) CanSubmitBeforeAccept
+* (optional) CanValidateBeforeRun
+* (optional) ConfirmAutomatically
+
+* (optional) CodeDefault
+* (optional) CodeAnswer
+
+* (optional) NumOfFuncFiles
+** (optional) Func1Name, Func2Name, ...
+** (optional) Func1Default, Func2Default, ...
+** (optional) Func1Answer, Func2Answer, ...
+
+* (optional) NumOfTestCases
+** (optional) TestCase1Answer, TestCase2Answer, ...
+  </Usage>
+
+  <Name>@ViewBag.Name</Name>
+  <Subject>@ViewBag.Subject</Subject>
+  <Directory>@ViewBag.Name</Directory>
+  @if(Model.HasParameter("Description")) {
+    <Description UseMarkdown="true">@ViewBag.Description.ToString().Trim()</Description>
+  }
+  @if(Model.HasParameter("Tags")) {
+    <Tags>@ViewBag.Tags.ToString().Trim()</Tags>
+  }
+  @if(Model.HasParameter("Deadline")) {
+    <Deadline>@ViewBag.Deadline</Deadline>
+  }
+  <Flags>
+    <UseStdout>true</UseStdout>
+    <UseStderr>true</UseStderr>
+    <UseCommand>true</UseCommand>
+    <UseSave>true</UseSave>
+    <UseReset>true</UseReset>
+    @if(Model.HasParameter("CanSubmitAfterDeadline")) {
+      <CanSubmitAfterDeadline>@ViewBag.CanSubmitAfterDeadline</CanSubmitAfterDeadline>
+    }
+    @if(Model.HasParameter("CanSubmitBeforeAccept")) {
+     <CanSubmitBeforeAccept>@ViewBag.CanSubmitBeforeAccept</CanSubmitBeforeAccept>
+    }
+    @if(Model.HasParameter("CanValidateBeforeRun")) {
+      <CanValidateBeforeRun>@ViewBag.CanValidateBeforeRun</CanValidateBeforeRun>
+    }
+    @if(Model.HasParameter("ConfirmAutomatically")) {
+      <ConfirmAutomatically>@ViewBag.ConfirmAutomatically</ConfirmAutomatically>
+    }
+  </Flags>
+
+  <Files>
+
+    <Code Name="program.m" Label="Main program" Language="octave" ContentType="text/plain" Maxlength="10000" Submit="true">
+      @if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"CodeDefault")))
+      {
+        <Default>@ViewBag.CodeDefault.ToString().Trim()</Default>
+      }
+      @if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"CodeAnswer")))
+      {
+        <Answer>@ViewBag.CodeAnswer.ToString().Trim()</Answer>
+      }
+      else if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"CodeDefault")))
+      {
+        <Answer>@ViewBag.CodeDefault.ToString().Trim()</Answer>
+      }
+    </Code>
+
+    @if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"NumOfFuncFiles")))
+    {
+      @for(var i = 0; i < int.Parse(ViewBag.NumOfFuncFiles); i++)
+      {
+        @if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"Func{i + 1}Name")))
+        {
+          <Code Name="@Model.GetParameter($"Func{i + 1}Name")" Label="@Model.GetParameter($"Func{i + 1}Name")" Language="text" ContentType="text/plain" Maxlength="10000" ReadOnly="false" Submit="true">
+            @if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"Func{i + 1}Default"))) {
+              <Default>@Model.GetParameter($"Func{i + 1}Default").ToString().Trim()</Default>
+            }
+            @if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"Func{i + 1}Answer"))) {
+              <Answer>@Model.GetParameter($"Func{i + 1}Answer").ToString().Trim()</Answer>
+            }
+            else if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"Func{i + 1}Default")))
+            {
+              <Answer>@Model.GetParameter($"Func{i + 1}Default").ToString().Trim()</Answer>
+            }
+          </Code>
+        }
+      }
+    }
+
+  </Files>
+
+  <Run>
+    rm -f *.png
+    DISPLAY=no octave --no-window-system --silent program.m
+    c=`ls -F *.png 2> /dev/null | wc -l`
+    if [ $c -gt 0 ]; then
+      files=$(ls -1 | grep '.png$' | tr '\n' ' ' | sed 's/[ \t]*$//')
+      echo "image Figures $files" > $CMD
+      echo "submit $files" > $CMD
+    fi
+  </Run>
+
+  <Limits>
+    <CpuTime>10</CpuTime>
+    <Memory>300M</Memory>
+    <StdoutLength>50000</StdoutLength>
+    <StderrLength>50000</StderrLength>
+    <Pids>10</Pids>
+  </Limits>
+  
+  <Validations>
+    @if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"NumOfTestCases")))
+    {
+      @for(var i = 0; i < int.Parse(ViewBag.NumOfTestCases); i++)
+      {
+        @if(!string.IsNullOrWhiteSpace(Model.GetParameterAsString($"TestCase{i + 1}Answer")))
+        {  
+          <Validation Name="testcase@(i + 1)" Type="Equals">
+            <Run>DISPLAY=no octave --no-window-system --silent program.py</Run>
+            <Answer>@Model.GetParameter($"TestCase{i + 1}Answer").ToString().Trim()</Answer>
+          </Validation>
+        }
+      }
+    }
+  </Validations>
+
+</Activity>

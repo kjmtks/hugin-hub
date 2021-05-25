@@ -1,0 +1,20 @@
+name: python3
+author: Takeshi Kojima
+email: kojima@tokushima-u.ac.jp
+description: |-2
+  Python 3.8.2 and pandas, numpy, matplotlib
+commands: |-2
+  apt-get update
+  apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libbz2-dev lzma liblzma-dev cmake 
+  mkdir /tmp-python3
+  cd /tmp-python3
+  wget --no-check-certificate https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tgz
+  tar xvfzp Python-3.8.2.tgz
+  cd /tmp-python3/Python-3.8.2
+  ./configure --enable-optimizations
+  make
+  make install
+  pip3 install --upgrade pip
+  pip3 install pandas numpy matplotlib
+  cd /
+  rm -rf /tmp-python3
