@@ -3,6 +3,8 @@ author: Takeshi Kojima
 email: kojima@tokushima-u.ac.jp
 description: |-2
   Octave 5.2.0 and control package
+activities:
+  - https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/activities/kojima/octave/octave.xml
 commands: |-2
   fc-cache -fv
   mkdir /tmp-octave
