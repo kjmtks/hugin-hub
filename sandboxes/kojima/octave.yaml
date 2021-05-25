@@ -9,7 +9,7 @@ commands: |-2
   fc-cache -fv
   mkdir /tmp-octave
   cd /tmp-octave
-  wget --no-check-certificate wget http://ftp.jaist.ac.jp/pub/GNU/octave/octave-5.2.0.tar.xz
+  wget --no-check-certificate http://ftp.jaist.ac.jp/pub/GNU/octave/octave-5.2.0.tar.xz
   tar xvf octave-5.2.0.tar.xz
   cd octave-5.2.0
   autoconf
