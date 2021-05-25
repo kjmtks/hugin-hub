@@ -9,14 +9,8 @@ activities:
 
 
 sandboxes:
-
-  - path: https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/sandboxes/kojima/octave.yaml
-    activities:
-      - https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/activities/kojima/octave/octave.xml
-
-  - path: https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/sandboxes/kojima/python3.yaml
-    activities:
-      - https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/activities/kojima/python3/python3.xml
+  - https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/sandboxes/kojima/octave.yaml
+  - https://raw.githubusercontent.com/kjmtks/hugin-initial-lecture/main/sandboxes/kojima/python3.yaml
 
 
 contents:
