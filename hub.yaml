@@ -4,8 +4,8 @@ description: |-2
 
 
 activities:
-  - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/etc/form.xml
-  - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/etc/upload.xml
+  etc/form: https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/etc/form.xml
+  etc/upload:  https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/etc/upload.xml
 
 
 sandboxes:
