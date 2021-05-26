@@ -32,6 +32,5 @@ sandboxes:
 contents:
 
   - name: kjmtks/hugin-initial-lecture
-    description: |-2
-      Initial lecture contents
+    description: Initial lecture contents
     url: https://github.com/kjmtks/hugin-initial-lecture.git
