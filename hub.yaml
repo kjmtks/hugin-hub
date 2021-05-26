@@ -6,12 +6,23 @@ description: |-2
 activities:
   - name: etc/form
     url: https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/etc/form.xml
+    desc: Input Form
+    requirements: Any sandbox
+
   - name: etc/upload
     url: https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/etc/upload.xml
+    desc: File upload
+    requirements: Any sandbox
+
   - name: python3/python3
     url: https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/python3/python3.xml
+    desc: Run python3
+    requirements: python3
+
   - name: octave/octave
     url: https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/octave/octave.xml
+    desc: Run octave
+    requirements: octave
 
 sandboxes:
   - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/octave.yaml
