@@ -34,11 +34,11 @@
 
   <Files>
     <Code Name="program.m" Label="Main program" Language="python" ContentType="text/plain" Maxlength="10000" Submit="true">
-      <Default>{{ code_default }}</Default>
+      <Default>{{ trim(code_default) }}</Default>
       {{ if !is_null_or_whitespace(code_answer) }}
-        <Answer>{{ code_answer }}</Answer>
+        <Answer>{{ trim(code_answer) }}</Answer>
       {{ else}}
-        <Answer>{{ code_default }}</Answer>
+        <Answer>{{ trim(code_default) }}</Answer>
       {{ end }}
     </Code>
 
@@ -47,11 +47,11 @@
         <Code Name="{{ "func" + $i + "name" }}"
               Label="{{ "func" + $i + "name" }}"
               Language="text" ContentType="text/plain" Maxlength="10000" ReadOnly="false" Submit="true">
-          <Default>{{ get_parameter("func" + $i + "default") }}</Default>
+          <Default>{{ trim(get_parameter("func" + $i + "default")) }}</Default>
           {{ if !is_null_or_whitespace(get_parameter("csv" + $i + "answer")) }}
-            <Answer>{{ get_parameter("func" + $i + "answer") }}</Answer>
+            <Answer>{{ trim(get_parameter("func" + $i + "answer")) }}</Answer>
           {{ else}}
-            <Answer>{{ get_parameter("func" + $i + "default") }}</Answer>
+            <Answer>{{ trim(get_parameter("func" + $i + "default")) }}</Answer>
           {{ end }}
         </Code>
       {{ end }}
@@ -82,7 +82,7 @@
       {{ for $i in 1..string.to_int(num_of_testcases) }}
         <Validation Name="{{ "testcase" + $i }}" Type="Equals">
           <Run>python3 program.py</Run>
-          <Answer>{{ get_parameter("testcase" + $i + "answer") }}</Answer>
+          <Answer>{{ trim(get_parameter("testcase" + $i + "answer")) }}</Answer>
         </Validation>
       {{ end }}
     {{ end }}
