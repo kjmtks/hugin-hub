@@ -58,16 +58,18 @@
     {{ end }}
   </Files>
 
-  <Run>
-    rm -f *.png
-    DISPLAY=no octave --no-window-system --silent program.m
-    c=`ls -F *.png 2> /dev/null | wc -l`
-    if [ $c -gt 0 ]; then
-      files=$(ls -1 | grep '.png$' | tr '\n' ' ' | sed 's/[ \t]*$//')
-      echo "image Figures $files" > $CMD
-      echo "submit $files" > $CMD
-    fi
-  </Run>
+  <Runners>
+    <Runner Name="run" Subject="実行" Icon="fas fa-play" Auxiliary="false">
+      rm -f *.png
+      DISPLAY=no octave --no-window-system --silent program.m
+      c=`ls -F *.png 2> /dev/null | wc -l`
+      if [ $c -gt 0 ]; then
+        files=$(ls -1 | grep '.png$' | tr '\n' ' ' | sed 's/[ \t]*$//')
+        echo "image Figures $files" > $CMD
+        echo "submit $files" > $CMD
+      fi
+    </Runner>
+  </Runners>
 
   <Limits>
     <CpuTime>20</CpuTime>
