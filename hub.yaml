@@ -19,6 +19,11 @@ activities:
     description: Run python3
     requirements: python3
 
+  - name: python3/blockly-basic.xml
+    url: https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/python3/blockly-basic.xml
+    description: Run Blockly (python3)
+    requirements: python3
+
   - name: octave/octave
     url: https://raw.githubusercontent.com/kjmtks/hugin-hub/main/activities/kojima/octave/octave.xml
     description: Run octave
