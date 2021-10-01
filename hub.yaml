@@ -32,6 +32,7 @@ activities:
 sandboxes:
   - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/octave.yaml
   - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/python3.yaml
+  - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/r-lang.yaml
 
 
 contents:
