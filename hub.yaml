@@ -33,6 +33,7 @@ sandboxes:
   - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/octave.yaml
   - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/python3.yaml
   - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/rlang.yaml
+  - https://raw.githubusercontent.com/kjmtks/hugin-hub/main/sandboxes/kojima/latex.yaml
 
 
 contents:
