@@ -21,7 +21,7 @@ commands: |-2
 
   # install control package
   wget --no-check-certificate https://octave.sourceforge.io/download.php?package=control-3.2.0.tar.gz -O control-3.2.0.tar.gz
-  echo "pkg install control - 3.2.0.tar.gz" | octave -q -H
+  echo "pkg install control-3.2.0.tar.gz" | octave -q -H
 
   cd /
   rm -rf /tmp-octave
